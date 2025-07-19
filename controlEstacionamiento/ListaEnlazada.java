@@ -18,19 +18,20 @@ public class ListaEnlazada {
 
     public ListaEnlazada() {
         cabeza = null;
+        cola = null;
     }
+
+    private Nodo cola;
 
     // Agregar al final
     public void agregar(Vehiculo dato) {
         Nodo nuevo = new Nodo(dato);
         if (cabeza == null) {
             cabeza = nuevo;
+            cola = nuevo;
         } else {
-            Nodo actual = cabeza;
-            while (actual.siguiente != null) {
-                actual = actual.siguiente;
-            }
-            actual.siguiente = nuevo;
+            cola.siguiente = nuevo;
+            cola = nuevo;
         }
     }
 
@@ -83,4 +84,15 @@ public class ListaEnlazada {
         return sb.toString();
     }
 
+    // Método para buscar un vehículo por placa
+    public Vehiculo buscarPorPlaca(String placa) {
+        Nodo actual = cabeza;
+        while (actual != null) {
+            if (actual.dato.getPlaca().equalsIgnoreCase(placa)) {
+                return actual.dato;
+            }
+            actual = actual.siguiente;
+        }
+        return null;
+    }
 }

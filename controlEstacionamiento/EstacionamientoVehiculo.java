@@ -1,13 +1,14 @@
 package controlEstacionamiento;
 
-import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import javax.swing.*;
 
 public class EstacionamientoVehiculo extends JFrame implements ActionListener {
 
     private JLabel label1, listaVehiculos;
     private JButton agregar, retirar;
+    private JButton actualizar;
     private JTextArea vehiculosEstacionados;
     private JScrollPane pane1;
     private ListaEnlazada vehiculos;
@@ -58,6 +59,14 @@ public class EstacionamientoVehiculo extends JFrame implements ActionListener {
         retirar.setForeground(Color.WHITE);
         retirar.addActionListener(this);
         add(retirar);
+
+        actualizar = new JButton("Actualizar");
+        actualizar.setBounds(170, 460, 130, 40);
+        actualizar.setFont(new Font("Calibri", 1, 14));
+        actualizar.setBackground(new Color(70, 130, 180));
+        actualizar.setForeground(Color.WHITE);
+        actualizar.addActionListener(this);
+        add(actualizar);
     }
 
     @Override
@@ -68,8 +77,26 @@ public class EstacionamientoVehiculo extends JFrame implements ActionListener {
             sistema.setVisible(true);
             sistema.setResizable(false);
             sistema.setLocationRelativeTo(null);
-            this.setVisible(false);
+            this.dispose();
+        } else if (e.getSource() == retirar) {
+            String placa = JOptionPane.showInputDialog(this, "Ingrese la placa del vehiculo a retirar:");
+            if (placa != null && !placa.trim().isEmpty()) {
+                Vehiculo vehiculoARetirar = vehiculos.buscarPorPlaca(placa.trim());
+                if (vehiculoARetirar != null) {
+                    vehiculos.eliminar(vehiculoARetirar);
+                    JOptionPane.showMessageDialog(this, "Vehiculo retirado correctamente.");
+                    actualizarListaVehiculos();
+                } else {
+                    JOptionPane.showMessageDialog(this, "Vehiculo no encontrado.");
+                }
+            }
+        } else if (e.getSource() == actualizar) {
+            actualizarListaVehiculos();
         }
+    }
+
+    private void actualizarListaVehiculos() {
+        vehiculosEstacionados.setText(vehiculos.obtenerElementos());
     }
 
     public static void main(String[] args) {
@@ -81,4 +108,3 @@ public class EstacionamientoVehiculo extends JFrame implements ActionListener {
         estacionamiento.setLocationRelativeTo(null);
     }
 }
-

@@ -1,8 +1,8 @@
 package controlEstacionamiento;
 
-import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import javax.swing.*;
 
 public class Sistema extends JFrame implements ActionListener {
 
@@ -99,14 +99,14 @@ public class Sistema extends JFrame implements ActionListener {
                 estacionamiento.setResizable(false);
                 estacionamiento.setLocationRelativeTo(null);
 
-                this.setVisible(false);
+                this.dispose();
             }
         }
     }
 
     public static void main(String[] args) {
         ListaEnlazada lista = new ListaEnlazada();
-        Sistema sistema = new Sistema(vehiculos);
+        Sistema sistema = new Sistema(lista);
         sistema.setBounds(0, 0, 400, 500);
         sistema.setVisible(true);
         sistema.setResizable(false);
