@@ -79,6 +79,9 @@ public class Sistema extends JFrame implements ActionListener {
         if (e.getSource() == boton1) {
             if (text1.getText().isEmpty() || text2.getText().isEmpty() || tipoVehiculo.getSelectedItem().equals("-")) {
                 JOptionPane.showMessageDialog(null, "Debe llenar todo.");
+            }
+            if (text2.getText().length() != 6) {
+                JOptionPane.showMessageDialog(null, "Placa de vehiculo mal colocada.");
             } else {
                 nombre = text1.getText();
                 placa = text2.getText();
