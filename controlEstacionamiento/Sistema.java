@@ -13,7 +13,8 @@ public class Sistema extends JFrame implements ActionListener {
     private Persona persona;
     private Vehiculo vehiculo;
     private static ListaEnlazada vehiculos;
-    private String nombre, placa, tipo;
+    private String nombre, placa;
+    String tipo;
 
     public Sistema(ListaEnlazada vehiculos) {
         setLayout(null);
@@ -88,10 +89,11 @@ public class Sistema extends JFrame implements ActionListener {
                 tipo = (String) tipoVehiculo.getSelectedItem();
                 persona = new Persona(nombre);
 
+                java.time.LocalDateTime now = java.time.LocalDateTime.now();
                 if (tipo.equals("Auto")) {
-                    vehiculo = new Auto(placa, persona);
+                    vehiculo = new Auto(placa, persona, tipo, now);
                 } else if (tipo.equals("Moto")) {
-                    vehiculo = new Moto(placa, persona);
+                    vehiculo = new Moto(placa, persona, tipo, now);
                 }
 
                 vehiculos.agregar(vehiculo);

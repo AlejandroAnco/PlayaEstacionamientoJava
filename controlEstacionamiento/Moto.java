@@ -1,5 +1,7 @@
 package controlEstacionamiento;
 
+import java.time.LocalDateTime;
+
 public class Moto extends Vehiculo implements Comparable {
 
     private String marca;
@@ -7,8 +9,8 @@ public class Moto extends Vehiculo implements Comparable {
     private Persona propietario;
     private String color;
 
-    public Moto(String placa, Persona propietario) {
-        super(placa, propietario);
+    public Moto(String placa, Persona propietario, String tipo, LocalDateTime fechaIngreso) {
+        super(placa, propietario, tipo, fechaIngreso);
         this.propietario = propietario;
     }
 
@@ -62,7 +64,13 @@ public class Moto extends Vehiculo implements Comparable {
     public String mostrarDatos() {
         return "Nombre de usuario: " + propietario.getNombre()
                 + ", Placa: " + getPlaca()
+                + ", Fecha de ingreso: " + getFechaIngreso()
                 + ", Tipo de vehiculo: Moto";
+    }
+
+    @Override
+    public String getTipo() {
+        return "Moto";
     }
 
 }

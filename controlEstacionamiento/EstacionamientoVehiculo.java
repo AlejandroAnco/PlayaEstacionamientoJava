@@ -79,17 +79,22 @@ public class EstacionamientoVehiculo extends JFrame implements ActionListener {
             sistema.setLocationRelativeTo(null);
             this.dispose();
         } else if (e.getSource() == retirar) {
-            String placa = JOptionPane.showInputDialog(this, "Ingrese la placa del vehiculo a retirar:");
-            if (placa != null && !placa.trim().isEmpty()) {
-                Vehiculo vehiculoARetirar = vehiculos.buscarPorPlaca(placa.trim());
-                if (vehiculoARetirar != null) {
-                    vehiculos.eliminar(vehiculoARetirar);
-                    JOptionPane.showMessageDialog(this, "Vehiculo retirado correctamente.");
-                    actualizarListaVehiculos();
-                } else {
-                    JOptionPane.showMessageDialog(this, "Vehiculo no encontrado.");
+            if (vehiculosEstacionados.getText().equals("")) {
+                JOptionPane.showMessageDialog(null, "Error! no hay vehiculos estacionados");
+            } else {
+                String placa = JOptionPane.showInputDialog(this, "Ingrese la placa del vehiculo a retirar:");
+                if (placa != null && !placa.trim().isEmpty()) {
+                    Vehiculo vehiculoARetirar = vehiculos.buscarPorPlaca(placa.trim());
+                    if (vehiculoARetirar != null) {
+                        vehiculos.eliminar(vehiculoARetirar);
+                        JOptionPane.showMessageDialog(this, "Vehiculo retirado correctamente.");
+                        actualizarListaVehiculos();
+                    } else {
+                        JOptionPane.showMessageDialog(this, "Vehiculo no encontrado.");
+                    }
                 }
             }
+
         } else if (e.getSource() == actualizar) {
             actualizarListaVehiculos();
         }
