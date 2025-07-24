@@ -60,7 +60,7 @@ public class EstacionamientoVehiculo extends JFrame implements ActionListener {
         retirar.addActionListener(this);
         add(retirar);
 
-        actualizar = new JButton("Actualizar");
+        actualizar = new JButton("Graficar");
         actualizar.setBounds(170, 460, 130, 40);
         actualizar.setFont(new Font("Calibri", 1, 14));
         actualizar.setBackground(new Color(70, 130, 180));
@@ -96,7 +96,11 @@ public class EstacionamientoVehiculo extends JFrame implements ActionListener {
             }
 
         } else if (e.getSource() == actualizar) {
-            actualizarListaVehiculos();
+            Grafica grafica = new Grafica();
+            grafica.setBounds(0, 0, 400, 365);
+            grafica.setVisible(true);
+            grafica.setResizable(false);
+            grafica.setLocationRelativeTo(null);
         }
     }
 
