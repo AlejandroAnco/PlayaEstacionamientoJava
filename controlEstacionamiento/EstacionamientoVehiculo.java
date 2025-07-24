@@ -8,7 +8,7 @@ public class EstacionamientoVehiculo extends JFrame implements ActionListener {
 
     private JLabel label1, listaVehiculos;
     private JButton agregar, retirar;
-    private JButton actualizar;
+    private JButton graficar;
     private JTextArea vehiculosEstacionados;
     private JScrollPane pane1;
     private ListaEnlazada vehiculos;
@@ -60,13 +60,13 @@ public class EstacionamientoVehiculo extends JFrame implements ActionListener {
         retirar.addActionListener(this);
         add(retirar);
 
-        actualizar = new JButton("Graficar");
-        actualizar.setBounds(170, 460, 130, 40);
-        actualizar.setFont(new Font("Calibri", 1, 14));
-        actualizar.setBackground(new Color(70, 130, 180));
-        actualizar.setForeground(Color.WHITE);
-        actualizar.addActionListener(this);
-        add(actualizar);
+        graficar = new JButton("Graficar");
+        graficar.setBounds(170, 460, 130, 40);
+        graficar.setFont(new Font("Calibri", 1, 14));
+        graficar.setBackground(new Color(70, 130, 180));
+        graficar.setForeground(Color.WHITE);
+        graficar.addActionListener(this);
+        add(graficar);
     }
 
     @Override
@@ -95,8 +95,8 @@ public class EstacionamientoVehiculo extends JFrame implements ActionListener {
                 }
             }
 
-        } else if (e.getSource() == actualizar) {
-            Grafica grafica = new Grafica();
+        } else if (e.getSource() == graficar) {
+            Grafica grafica = new Grafica(vehiculos);
             grafica.setBounds(0, 0, 400, 365);
             grafica.setVisible(true);
             grafica.setResizable(false);

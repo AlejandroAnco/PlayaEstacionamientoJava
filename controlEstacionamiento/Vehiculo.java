@@ -30,7 +30,7 @@ public abstract class Vehiculo {
     public Persona getPropietario() {
         return propietario;
     }
-    
+
     public abstract String getTipo();
 
     public LocalDateTime getFechaIngreso() {

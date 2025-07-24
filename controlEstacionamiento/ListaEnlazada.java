@@ -35,8 +35,8 @@ public class ListaEnlazada {
             cola.siguiente = nuevo;
             cola = nuevo;
         }
-        
-        longitud ++;
+
+        longitud++;
     }
 
     // Eliminar el primer nodo con un valor dado
@@ -58,17 +58,17 @@ public class ListaEnlazada {
         if (actual.siguiente == null) {
             return false;
         }
-        
-        longitud --;
+
+        longitud--;
 
         actual.siguiente = actual.siguiente.siguiente;
         return true;
     }
 
-    public int tamanio(){
+    public int tamanio() {
         return longitud;
     }
-    
+
     // Mostrar elementos
     public void mostrar() {
         Nodo actual = cabeza;
@@ -105,24 +105,24 @@ public class ListaEnlazada {
         }
         return null;
     }
-    
-    public int cantidadAutos(){
+
+    public int cantidadAutos() {
         Nodo actual = cabeza;
         int autos = 0;
-        while (actual != null){
-            if (actual.dato.getTipo().equals("Auto")){
+        while (actual != null) {
+            if (actual.dato.getTipo().equals("Auto")) {
                 autos++;
             }
             actual = actual.siguiente;
         }
         return autos;
     }
-    
-    public int cantidadMotos(){
+
+    public int cantidadMotos() {
         Nodo actual = cabeza;
         int motos = 0;
-        while (actual != null){
-            if (actual.dato.getTipo().equals("Moto")){
+        while (actual != null) {
+            if (actual.dato.getTipo().equals("Moto")) {
                 motos++;
             }
             actual = actual.siguiente;

@@ -1,22 +1,22 @@
 package controlEstacionamiento;
 
 public class Persona {
-    
+
     private String nombre;
-    
-    public Persona(String nombre){
+
+    public Persona(String nombre) {
         this.nombre = nombre;
     }
-    
-    public Persona(){
-        
+
+    public Persona() {
+
     }
-    
-    public String getNombre(){
+
+    public String getNombre() {
         return nombre;
     }
-    
-    public void setNombre(String nombre){
+
+    public void setNombre(String nombre) {
         this.nombre = nombre;
     }
 }

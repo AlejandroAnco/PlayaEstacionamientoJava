@@ -1,17 +1,16 @@
 package controlEstacionamiento;
 
-import javax.swing.*;
 import java.awt.*;
-import java.awt.event.*;
+import javax.swing.*;
 
-public class Grafica extends JFrame implements ActionListener {
+public class Grafica extends JFrame {
 
     private JLabel titulo;
     private ListaEnlazada vehiculos;
 
     public Grafica() {
         setLayout(null);
-        getContentPane().setBackground(new Color(149, 77, 237));
+        getContentPane().setBackground(new Color(206, 181, 235));
 
         //label
         titulo = new JLabel("Vehiculos en estacionamiento");
@@ -22,18 +21,33 @@ public class Grafica extends JFrame implements ActionListener {
 
     }
 
+    public Grafica(ListaEnlazada vehiculos) {
+        this();
+        this.vehiculos = vehiculos;
+    }
+
     public void paint(Graphics g) {
+        super.paint(g);
+
+        if (vehiculos == null) {
+            return;
+        }
 
         int autos = vehiculos.cantidadAutos();
         int motos = vehiculos.cantidadMotos();
 
         int total = autos + motos;
 
+        if (total == 0) {
+            g.drawString("No hay vehiculos estacionados", 100, 150);
+            return;
+        }
+
         int grados_auto = autos * 360 / total;
         int grados_moto = motos * 360 / total;
 
         //para auto
-        g.setColor(new Color(255, 0, 0));
+        g.setColor(new Color(210, 121, 80));
         //dibuja un arco circular
         //        (x, y, ancho, largo, grado inicial, grado final)
         g.fillArc(25, 80, 200, 200, 0, grados_auto);
@@ -43,7 +57,7 @@ public class Grafica extends JFrame implements ActionListener {
         g.drawString("Autos", 275, 135);
 
         //para moto
-        g.setColor(new Color(0, 130, 0));
+        g.setColor(new Color(168, 148, 91));
         //dibuja un arco circular
         //        (x, y, ancho, largo, grado inicial, grado final)
         g.fillArc(25, 80, 200, 200, grados_auto, grados_moto);
@@ -54,13 +68,9 @@ public class Grafica extends JFrame implements ActionListener {
 
     }
 
-    @Override
-    public void actionPerformed(ActionEvent e) {
-
-    }
-
     public static void main(String[] args) {
-        Grafica grafica = new Grafica();
+        ListaEnlazada lista = new ListaEnlazada();
+        Grafica grafica = new Grafica(lista);
         grafica.setBounds(0, 0, 400, 365);
         grafica.setVisible(true);
         grafica.setResizable(false);
