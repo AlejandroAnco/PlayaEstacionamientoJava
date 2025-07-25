@@ -97,7 +97,7 @@ public class EstacionamientoVehiculo extends JFrame implements ActionListener {
 
         } else if (e.getSource() == graficar) {
             Grafica grafica = new Grafica(vehiculos);
-            grafica.setBounds(0, 0, 400, 365);
+            grafica.setBounds(0, 0, 500, 365);
             grafica.setVisible(true);
             grafica.setResizable(false);
             grafica.setLocationRelativeTo(null);
